@@ -1,0 +1,41 @@
+<div class="conteiner">
+  <div class="tabla-container">
+    <h1 class="mt-4 py-2 title">VETERINARIA UNI-IBEROAMERICANA <br/>Mascotas</h1>
+    <div class="add-container">
+      <div></div>
+      <div class="botones-container">
+        <button class="btn btn-primary btn-menu-mascotas" routerLink="/propietarios">Propietarios</button>
+        <button class="btn btn-secondary" routerLink="/form-mascota">Add</button>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Propietario</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Raza</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Peso</th>
+          <th scope="col">Genero</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mascota of listMascotas">
+          <th scope="row">{{ mascota.mascotaId }}</th>
+          <td>{{ mascota.propietario?.nombres }}</td>
+          <td>{{ mascota.nombre }}</td>
+          <td>{{ mascota.raza?.descripcionRaza }}</td>
+          <td>{{ mascota.tipo?.descripcionTipo }}</td>
+          <td>{{ mascota.pesoLb }}</td>
+          <td>{{ mascota.genero }}</td>
+          <td>
+            <button class="btn btn-warning" routerLink="/form-mascota/{{mascota.mascotaId}}" >Editar</button>
+            <button class="btn btn-danger ms-4" (click)="eliminarMascota(mascota.mascotaId)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
